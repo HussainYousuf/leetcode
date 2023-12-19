@@ -46,7 +46,7 @@ class Heap:
         return self
 
     def __str__(self) -> str:
-        return str(self.arr[1:]) + " len: " + str(self.size)
+        return str(self.arr[1 : self.size + 1]) + " len: " + str(self.size)
 
     # idea is simple take the largest (index == 1) and replace it with last index, apply maxHeapify on index 1 to maintain HEAP property
     def sort(self):
@@ -62,7 +62,7 @@ class Heap:
 
     def isHeap(self):
         arr = self.arr
-        for i in range(2, self.size):
+        for i in range(2, self.size + 1):
             if arr[self.parent(i)] < arr[i]:
                 print(
                     "heap prop violated: "
