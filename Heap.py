@@ -75,5 +75,4 @@ class Heap:
         return True
 
 
-print(Heap([4, 1, 3, 2, 16, 9, 10, 14, 8, 7]).buildHeap().sort())
-print(Heap([16, 14, 7, 10, 2, 8, 9, 3, 4, 1]).buildHeap().sort())
+# print(Heap([1, 8.5, 7, 8, 5, 4, 3]).isHeap())
