@@ -31,11 +31,14 @@ def mergeSort(arr, startIndex=None, length=None, comment=None):
         startIndex = 0
         length = len(arr)
 
-    if length - startIndex == 1:
-        return
+    if length - startIndex <= 1:
+        return arr
 
     mid = (startIndex + length) // 2
     mergeSort(arr, startIndex, mid)
     mergeSort(arr, mid, length)
 
     return merge(arr, startIndex, mid, length)
+
+
+print(mergeSort([2, 1]))

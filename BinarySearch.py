@@ -12,4 +12,4 @@ def binarySearch(arr, val):
     return -1
 
 
-print([binarySearch([1, 2, 3, 4, 5, 6, 7], i) for i in [1, 2, 3, 4, 5, 6, 7]])
+print([binarySearch([7], i) for i in [1, 2, 3, 4, 5, 6, 7]])
