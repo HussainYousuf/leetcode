@@ -1,6 +1,6 @@
 ## Notes:
 
-* The following are the conventions used in code *
+_The following are the conventions used in code_
 
 A subarray has Order and Continuity.
 
