@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-Queens Problem</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="480" height="480" style="border:1px solid #000;"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        const n = 8;
+        const cellSize = 60;
+
+        function drawBoard(queens) {
+            for (let row = 0; row < n; row++) {
+                for (let col = 0; col < n; col++) {
+                    ctx.beginPath();
+                    const color = (row + col) % 2 === 0 ? "white" : "black";
+                    ctx.fillStyle = color;
+                    ctx.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+
+                    const isQueen = queens.some(([r, c]) => r === row && c === col);
+                    if (isQueen) {
+                        ctx.beginPath();
+                        ctx.arc(col * cellSize + cellSize / 2, row * cellSize + cellSize / 2, cellSize / 2 - 5, 0, 2 * Math.PI);
+                        ctx.fillStyle = "red";
+                        ctx.fill();
+                        ctx.closePath();
+                    }
+                }
+            }
+        }
+
+        function solveNQueens(queens, row) {
+            if (row === n) {
+                solutions.push([...queens]);
+                return;
+            }
+
+            for (let col = 0; col < n; col++) {
+                if (queens.every(([r, c]) => row !== r && col !== c && Math.abs(row - r) !== Math.abs(col - c))) {
+                    queens.push([row, col]);
+                    solveNQueens(queens, row + 1);
+                    queens.pop();
+                }
+            }
+        }
+
+        const solutions = [];
+        const queens = [];
+        solveNQueens(queens, 0);
+
+        let index = 0;
+        function animateSolutions() {
+            if (index < solutions.length) {
+                drawBoard(solutions[index]);
+                index++;
+            }
+        }
+
+        setInterval(animateSolutions, 5000); // Adjust the interval as needed
+    </script>
+</body>
+
+</html>
