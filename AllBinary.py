@@ -12,3 +12,7 @@ class AllBinary:
             self.genBin(n, bs + [0])
             self.genBin(n, bs + [1])
         return self.res
+
+
+if __name__ == "__main__":
+    print(AllBinary().genBin(5))
