@@ -1,3 +1,23 @@
+# from leetcode
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        def f(t1, t2, i, j, memo={}):
+            if (i, j) in memo:
+                return memo[(i, j)]
+            if i == len(t1):
+                return 0
+            if j == len(t2):
+                return 0
+            if t1[i] == t2[j]:
+                memo[(i, j)] = 1 + f(t1, t2, i + 1, j + 1)
+            if t1[i] != t2[j]:
+                memo[(i, j)] = max(f(t1, t2, i + 1, j), f(t1, t2, i, j + 1))
+
+            return memo[(i, j)]
+
+        return f(text1, text2, 0, 0)
+
+
 def lcs(X, Y):
     if not X or not Y:
         return ""

@@ -72,3 +72,6 @@ isSteep' xs = fastSteep (sum xs) xs
   where
     fastSteep sum' [] = True
     fastSteep sum' (x : xs) = x > (sum' - x) && fastSteep (sum' - x) xs
+
+splitInHalf :: [a] -> ([a], [a])
+splitInHalf = foldr (\x (left, right) -> (x : right, left)) ([], [])
